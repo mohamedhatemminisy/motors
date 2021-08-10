@@ -117,7 +117,7 @@ class UserController extends Controller
             $data['password'] = $user->password;
             $data['verified'] = $user->email_verified_at ? '1' : "0";
             $data['device_token'] = $user->device_token;
-        
+            $data['token'] = '';
             return response([
                 'status' =>true ,
                 'message' =>trans('success.user_profile')  ,
@@ -141,8 +141,7 @@ class UserController extends Controller
             'VAT'     => $request->VAT,
             'NIP'     => $request->NIP,
             'IBAN'     => $request->IBAN,
-            'device_token' => $request->device_token,
-            'password' => bcrypt($request->password)
+            'device_token' => $request->device_token
         ]);
             $data['id'] = $user->id;
             $data['email'] = $user->email;
@@ -159,8 +158,7 @@ class UserController extends Controller
             $data['IBAN'] = $user->IBAN;
             $data['password'] = $user->password;
             $data['verified'] = $user->email_verified_at ? '1' : "0";
-
-
+            $data['token'] = '';
         return response([
             'status' =>true ,
             'message' =>trans('success.user_updated')  ,
